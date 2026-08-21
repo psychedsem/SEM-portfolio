@@ -1,7 +1,6 @@
 # SEM - Portfolio
 ![SEM-Portofolio](SEM-portfolio%20\(cover\).png)
 
-Portfolio personale sviluppato per il progetto finale HTML e CSS.
 
 ## Pagine
 
