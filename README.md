@@ -1,4 +1,5 @@
-# SEM — Portfolio personale
+# SEM - Portfolio
+![SEM-Portofolio](SEM-portfolio%20\(cover\).png)
 
 Portfolio personale sviluppato per il progetto finale HTML e CSS.
 
@@ -51,35 +52,3 @@ Portfolio personale sviluppato per il progetto finale HTML e CSS.
 - DnA — Science Magazine
 
 Le sezioni AI Agents e 3D Graphics sono mantenute nel portfolio come aree Work in Progress.
-
-## Come aprirlo
-
-1. Estrai la cartella.
-2. Aprila con Visual Studio Code.
-3. Apri `index.html`.
-4. Con Live Server: tasto destro su `index.html` → `Open with Live Server`.
-
-## Sass
-
-Il browser legge `css/main.css`, mentre i sorgenti Sass sono nella cartella `scss/`.
-
-Per ricompilare gli SCSS:
-
-```bash
-npm install
-npm run build
-```
-
-Per lavorare con compilazione automatica durante le modifiche:
-
-```bash
-npm run sass
-```
-
-## Passaggi finali
-
-- pubblicare il portfolio su GitHub Pages;
-- sostituire `og:image` con un URL assoluto dopo la pubblicazione;
-- collegare opzionalmente il form a un servizio di invio email;
-- effettuare l’ultimo controllo cross-browser e mobile;
-- aggiungere in futuro i progetti AI Agents e 3D Graphics.
