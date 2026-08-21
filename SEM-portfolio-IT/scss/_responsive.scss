@@ -1,0 +1,385 @@
+/* =============================================================================
+   09. DESIGN RESPONSIVE E OUTPUT ALTERNATIVI
+   Breakpoint per desktop compatto, tablet, mobile, stampa e riduzione delle animazioni.
+   ============================================================================= */
+
+@use "variables" as *;
+
+/* --- Tablet / layout a colonna singola ------------------------------------ */
+@media (max-width: 62rem) {
+  .hero-grid,
+  .about-grid,
+  .section-intro-grid,
+  .contact-layout,
+  .cv-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .section-intro-grid {
+    gap: 2.2rem;
+  }
+
+  .section-intro-media {
+    width: min(100%, 46rem);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .impact-map {
+    min-height: 29rem;
+  }
+
+  .cv-sidebar,
+  .contact-info {
+    position: static;
+  }
+
+  .cv-sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .cv-panel {
+    padding: 1.2rem;
+    border: 1px solid $line;
+    border-radius: $radius-md;
+    background: $white;
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+
+    &::before {
+      top: 0;
+      bottom: 0;
+      left: 0.45rem;
+      width: 2px;
+      height: auto;
+    }
+
+    li {
+      padding: 0 0 2rem 2.4rem;
+
+      &::before {
+        top: 0.2rem;
+        left: 0;
+      }
+    }
+  }
+}
+
+/* --- Mobile: menu hamburger e griglie a una colonna ----------------------- */
+@media (max-width: 48rem) {
+  .site-nav {
+    min-height: 4.25rem;
+  }
+
+  .nav-toggle {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  .nav-toggle-label {
+    width: 2.8rem;
+    height: 2.8rem;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 3;
+    border: 1px solid $line;
+    border-radius: 50%;
+    background: $white;
+    cursor: pointer;
+
+    span,
+    span::before,
+    span::after {
+      width: 1.15rem;
+      height: 2px;
+      display: block;
+      position: relative;
+      border-radius: 99px;
+      background: $ink;
+      transition:
+        transform $transition,
+        opacity $transition;
+    }
+
+    span::before,
+    span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    span::before {
+      top: -0.38rem;
+    }
+
+    span::after {
+      top: 0.38rem;
+    }
+  }
+
+  .nav-links {
+    padding: 5.25rem 1rem 1.25rem;
+    display: grid;
+    align-content: start;
+    position: fixed;
+    inset: 0 0 auto;
+    min-height: 100svh;
+    background: rgba($white, 0.98);
+    transform: translateY(-110%);
+    transition: transform 240ms ease;
+
+    a {
+      width: 100%;
+      min-height: 3.4rem;
+      justify-content: center;
+      font-size: 1.05rem;
+    }
+  }
+
+  .nav-toggle:checked ~ .nav-links {
+    transform: translateY(0);
+  }
+
+  .nav-toggle:checked + .nav-toggle-label span {
+    background: transparent;
+
+    &::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-grid {
+    padding-block: 4rem;
+  }
+
+  .hero-logo-image {
+    width: min(100%, 31rem);
+  }
+
+  .focus-grid,
+  .project-grid,
+  .skills-grid,
+  .form-grid,
+  .cv-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .focus-card {
+    min-height: 27rem;
+  }
+
+  .section-heading,
+  .contact-banner-inner,
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section-heading {
+    display: flex;
+  }
+
+  .project-card,
+  .project-card-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .project-visual {
+    min-height: 14rem;
+  }
+
+  .section-intro-grid {
+    margin-bottom: 3rem;
+  }
+
+  .section-illustration-wide {
+    max-height: 16rem;
+  }
+
+  .section-illustration-skills {
+    width: min(100%, 26rem);
+  }
+
+  .cv-entry {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .cv-entry-meta {
+    flex-wrap: nowrap;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}
+
+/* --- Mobile stretto -------------------------------------------------------- */
+@media (max-width: 34rem) {
+  .container {
+    width: min(calc(100% - 1.25rem), $container);
+  }
+
+  .impact-map {
+    min-height: 26rem;
+    padding: 1rem;
+  }
+
+  .impact-map-branches {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-map-branches::before {
+    display: none;
+  }
+
+  .impact-node {
+    min-height: 5.8rem;
+  }
+
+  .hero-actions,
+  .hero-actions .button {
+    width: 100%;
+  }
+}
+
+/* --- Accessibilità: riduzione delle animazioni ---------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* --- Stampa del CV ---------------------------------------------------------- */
+@media print {
+  .site-header,
+  .site-footer,
+  .cv-panel-contact,
+  .skip-link {
+    display: none !important;
+  }
+
+  body,
+  .cv-page {
+    color: #000;
+    background: #fff;
+    font-size: 10pt;
+  }
+
+  .page-hero {
+    padding-block: 1rem;
+    background: #fff;
+  }
+
+  .page-hero h1 {
+    font-size: 28pt;
+  }
+
+  .cv-layout {
+    width: 100%;
+    grid-template-columns: 31% 69%;
+    gap: 1.2rem;
+    padding-block: 1rem;
+  }
+
+  .cv-sidebar {
+    position: static;
+  }
+
+  .cv-entry {
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+
+/* Aree progetto e categorie progetto */
+/* --- Desktop compatto: categorie su due colonne --------------------------- */
+@media (max-width: 70rem) {
+  .project-categories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 62rem) {
+  .category-hero-grid,
+  .category-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-hero-icon {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 48rem) {
+  .project-categories-grid,
+  .category-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-categories-heading,
+  .category-projects-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .project-category-card {
+    grid-template-columns: 7rem minmax(0, 1fr);
+    min-height: 12.25rem;
+  }
+
+  .project-category-icon {
+    padding: 0.55rem;
+  }
+
+  .category-hero-icon {
+    width: min(100%, 23rem);
+  }
+}
+
+@media (max-width: 34rem) {
+  .project-category-card {
+    grid-template-columns: 6.25rem minmax(0, 1fr);
+  }
+
+  .project-category-content {
+    padding-inline: 0.85rem;
+  }
+
+  .project-category-title {
+    font-size: 1rem;
+  }
+
+  .project-category-tools span {
+    font-size: 0.63rem;
+  }
+}

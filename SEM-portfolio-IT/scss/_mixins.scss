@@ -1,0 +1,26 @@
+/* =============================================================================
+   MIXIN RIUTILIZZABILI
+   Blocchi Sass comuni per spaziatura, card e focus da tastiera.
+   ============================================================================= */
+
+@use "variables" as *;
+
+/* Spaziatura verticale standard delle sezioni */
+@mixin section-space {
+  padding-block: clamp(4.5rem, 8vw, 8rem);
+}
+
+
+/* Aspetto base delle card */
+@mixin card {
+  border: 1px solid $line;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+}
+
+
+/* Focus visibile da tastiera */
+@mixin focus-ring {
+  outline: 3px solid rgba($bridge, 0.35);
+  outline-offset: 4px;
+}
